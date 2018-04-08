@@ -13,11 +13,7 @@
 
 	<% @post.comments.each do |comment| %>
 		<div class="comment-box">
-			<% if comment.user.avatar? %>
-				<%= image_tag comment.user.avatar.url, class: 'profile-pic' %>
-			<% else %>
-				<%= image_tag "empty.jpg", class: 'profile-pic' %>
-			<% end %>
+			<%= render "layouts/profile_pic", x: comment.user %>
 			<p>
 				<strong><%= comment.user.username %></strong>
 				<span class="grey-text"><%= distance_of_time_in_words(comment.created_at - Time.now).gsub('about', ' ') %> ago</span><br>
@@ -26,6 +22,8 @@
 		</div>
 	<% end %>
 </div>
+
+<%#= render "layouts/profile_pic", x: @post.user.username %>
 
 <%= link_to 'Back', posts_path %>
 

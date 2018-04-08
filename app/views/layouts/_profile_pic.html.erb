@@ -1,0 +1,9 @@
+<% if x.avatar? %>
+	<%= image_tag x.avatar.url, class: 'profile-pic' %>
+<% else %>
+	<%= image_tag "empty.jpg", class: 'profile-pic' %>
+<% end %>
+
+
+<%#= gravatar_tag current_user.email, class: 'profile-pic', :size => 30 %>          
+<%#= gravatar_tag current_user.email, class: "profile-pic" %>
