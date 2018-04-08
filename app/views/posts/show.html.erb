@@ -5,16 +5,21 @@
 
 <%= render 'comments/form', comment: @comment %>
 
-<h4 id="comment-toggle">View Comments</h4>
-
+<h4 id="comment-toggle">
+<%= @post.comments.count %>
+ Comments</h4>
 
 <div id="comment-hider">
 
 	<% @post.comments.each do |comment| %>
 		<div class="comment-box">
-			<%= image_tag @post.user.avatar.url, class: 'profile-pic' %>
+			<% if comment.user.avatar? %>
+				<%= image_tag comment.user.avatar.url, class: 'profile-pic' %>
+			<% else %>
+				<%= image_tag "empty.jpg", class: 'profile-pic' %>
+			<% end %>
 			<p>
-				<strong><%= @post.user.username %></strong>
+				<strong><%= comment.user.username %></strong>
 				<span class="grey-text"><%= distance_of_time_in_words(comment.created_at - Time.now).gsub('about', ' ') %> ago</span><br>
 				<%= comment.comment_entry %><br>
 			</p>
