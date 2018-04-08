@@ -1,0 +1,37 @@
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<ul>
+			<li>
+				<h3>  
+				  <%= link_to post do %>
+				  	<%= post.title %>
+				  <% end %> 
+				</h3>
+			</li>
+
+			<% if current_user.username == post.user.username %>
+			<li>
+				<h6><%= link_to 'Edit Post', edit_post_path(post) %></h6>
+			</li>
+			<% end %>
+			
+			<li class="delete">
+				<%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do %>
+					<span class="glyphicon glyphicon-remove-circle"></span>
+				<% end %>
+			</li>
+		</ul>
+
+		<p>
+		  posted by
+		  <strong><%= post.user.username %></strong>
+		  <%= distance_of_time_in_words(post.created_at - Time.now)%> ago
+		</p>
+	</div>
+	<div class="panel-body">
+		<p>
+		  <%= post.blog_entry %>
+		</p>
+	</div>
+</div>

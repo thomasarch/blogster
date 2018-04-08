@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+
+<%= render 'post_form', post: @post %>
+
+<%= render 'comments/form', comment: @comment %>
+
+<h4 id="comment-toggle">View Comments</h4>
+
+
+<div id="comment-hider">
+
+	<% @post.comments.each do |comment| %>
+		<div class="comment-box">
+			<%= image_tag @post.user.avatar.url, class: 'profile-pic' %>
+			<p>
+				<strong><%= @post.user.username %></strong>
+				<span class="grey-text"><%= distance_of_time_in_words(comment.created_at - Time.now).gsub('about', ' ') %> ago</span><br>
+				<%= comment.comment_entry %><br>
+			</p>
+		</div>
+	<% end %>
+</div>
+
+<%= link_to 'Back', posts_path %>
+

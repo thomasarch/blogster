@@ -1,0 +1,26 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+ #comment-toggle {
+ 	cursor: pointer;
+ }
+
+.comment-box {
+	margin: 12px 0px 12px;
+	& img {
+		float:left;
+	} & p {
+		margin-left:12px;
+	} & .grey-text {
+		margin-left:6px;
+	} & * {
+		display:inline-block;	
+	}
+}
+
+.grey-text {
+	color: #aaa;
+}
+
